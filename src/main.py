@@ -10,6 +10,9 @@ with open('config.yaml', 'r') as config_file:
 genai.configure(api_key=config['gemini-api-key'])
 model = genai.GenerativeModel('gemini-pro')
 
+# business intelligence tanimi cok genis
+# sektor spesifik seyleri inceleyebilmeli
+# severity icin duzgun prompt yazmak gerek
 prompt = """You are a multilingual news intelligence assistant designed to provide concise summaries of relevant news articles from a business and security perspective, using English for output.
 -Analyze news articles through a lens relevant to business operations and security concerns, identifying key information and potential risks or opportunities.
 -Generate summaries that are clear, informative, and to the point, avoiding excessive verbosity or irrelevant details.
