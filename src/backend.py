@@ -26,15 +26,15 @@ async def handle_client(websocket, path):
 async def add_marker(marker_id, data):
     markers[marker_id] = data
     for websocket in connected_clients:
-        await websocket.send(json.dumps({"action": "add_marker", "marker": markers[id]}))
+        await websocket.send(json.dumps({"action": "add_marker", "marker": data}))
 
 async def remove_marker(marker_id):
     del markers[marker_id]
     for websocket in connected_clients:
         await websocket.send(json.dumps({"action": "remove_marker", "marker": {"id": marker_id}}))
 
-
 start_server = websockets.serve(handle_client, "localhost", 8765, ping_interval=20, ping_timeout=25)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
+
